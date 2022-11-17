@@ -16,7 +16,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Email</span> </label>
-                        <input type='text'
+                        <input type='email'
                             className='input input-bordered w-full max-w-xs'
                             {...register("email", {
                                 required: "Email Address is required"
