@@ -27,7 +27,7 @@ const SignUp = () => {
                     .then(() => {
                         console.log('user updated');
                         // toast.success('Profile Update successfully')
-                        navigate('/');
+                        saveUser(data.name, data.email)
                     })
                     .catch(err => console.error('While updating user', err));
             })
@@ -35,7 +35,22 @@ const SignUp = () => {
                 console.error('while creating user', error)
                 setSignUpError(error.message)
             });
+    }
 
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save user', data)
+                navigate('/');
+            })
     }
 
     return (
